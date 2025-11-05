@@ -11,6 +11,7 @@ import ashtangayoga from "./assets/ashtangayoga.png";
 import coupleyoga from "./assets/coupleyoga.png";
 import senioryoga from "./assets/senioryoga.png";
 import mantrajapa from "./assets/mantrajapa.png";
+import logo3 from "./assets/logo6.png";
 
 import "@fontsource/poppins/300.css";
 import "@fontsource/poppins/400.css";
