@@ -231,7 +231,7 @@ function App() {
     { icon: <FaSpa />, label: "Special Services", href: "#special-services" },
     { icon: <FaStar />, label: "Reviews", href: "#reviews" },
     { icon: <FaPhone />, label: "Contact Us", href: "#contact" },
-    { icon: <FaMapMarkerAlt />, label: "Location", href: "#location" },
+    // { icon: <FaMapMarkerAlt />, label: "Location", href: "#location" },
   ];
 
   const services = [
@@ -522,7 +522,10 @@ function App() {
               </nav>
 
               {/* Book Now Button */}
-              <button className="hidden lg:block bg-gradient-to-r from-matcha to-matcha text-white px-4 md:px-8 py-2 md:py-3 rounded-full text-sm md:text-base font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105">
+              <button
+                onClick={() => handleNavClick("#contact")}
+                className="hidden lg:block bg-gradient-to-r from-matcha to-matcha text-white px-4 md:px-8 py-2 md:py-3 rounded-full text-sm md:text-base font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
+              >
                 Book Now
               </button>
 
@@ -594,7 +597,10 @@ function App() {
                     Discover peace, strength, and mindfulness through authentic
                     yoga practices in our serene studio
                   </p>
-                  <button className="bg-gradient-to-r from-matcha to-matcha text-white px-6 md:px-10 py-3 md:py-4 text-lg md:text-xl font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                  <button
+                    onClick={() => handleNavClick("#contact")}
+                    className="bg-gradient-to-r from-matcha to-matcha text-white px-6 md:px-10 py-3 md:py-4 text-lg md:text-xl font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                  >
                     Start Your Journey
                   </button>
                 </div>
@@ -1562,11 +1568,11 @@ function App() {
                       Studio Address
                     </h4>
                     <p className="text-gray-700 leading-relaxed mb-4 text-base md:text-lg">
-                      123 Peaceful Lane
+                      Buurtcentrum Parkwijk
                       <br />
-                      Serenity Gardens
+                      Haagbeukweg 42
                       <br />
-                      Mindful City, MC 12345
+                      1326 CP Almere, Netherlands
                     </p>
                     <p className="text-gray-700 mb-6 text-base md:text-lg">
                       Phone: (555) 123-YOGA
@@ -1577,7 +1583,7 @@ function App() {
                     <button
                       onClick={() =>
                         window.open(
-                          "https://www.google.com/maps/place/Bangalore,+Karnataka/@12.9767936,77.590082,11z",
+                          "https://maps.app.goo.gl/7kLB4qGCPoa8upFW9",
                           "_blank"
                         )
                       }
@@ -1592,14 +1598,14 @@ function App() {
                   <div
                     onClick={() =>
                       window.open(
-                        "https://www.google.com/maps/place/Bangalore,+Karnataka/@12.9767936,77.590082,11z",
+                        "https://www.google.com/maps/place/Buurtcentrum+Parkwijk/@52.3951229,5.2134263,17z/data=!3m1!4b1!4m6!3m5!1s0x47c619e1e1e1e1e1:0x1e1e1e1e1e1e1e1e!8m2!3d52.3951229!4d5.2156012!16s%2Fg%2F11c5q5q5q5",
                         "_blank"
                       )
                     }
                     className="bg-almond rounded-3xl h-64 md:h-80 overflow-hidden cursor-pointer relative group transition-all duration-300 hover:shadow-2xl"
                   >
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497699.9973874144!2d77.35074421903857!3d12.95384772557775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.7373477875467!2d5.2433118!3d52.37518240000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c617aa8574d9ab%3A0x49a3629fa05263ac!2sCommunity%20Center%20Parkwijk!5e0!3m2!1sen!2sin!4v1762385517166!5m2!1sen!2sin"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
@@ -1703,11 +1709,11 @@ function App() {
                       Studio Address
                     </h4>
                     <p className="text-gray-700 leading-relaxed mb-4 text-base md:text-lg">
-                      123 Peaceful Lane
+                      Buurtcentrum Parkwijk
                       <br />
-                      Serenity Gardens
+                      Haagbeukweg 42
                       <br />
-                      Mindful City, MC 12345
+                      1326 CP Almere, Netherlands
                     </p>
                     <p className="text-gray-700 mb-6 text-base md:text-lg">
                       Phone: (555) 123-YOGA
@@ -1718,7 +1724,7 @@ function App() {
                     <button
                       onClick={() =>
                         window.open(
-                          "https://www.google.com/maps/place/Bangalore,+Karnataka/@12.9767936,77.590082,11z",
+                          "https://www.google.com/maps/place/Buurtcentrum+Parkwijk/@52.3951229,5.2134263,17z/data=!3m1!4b1!4m6!3m5!1s0x47c619e1e1e1e1e1:0x1e1e1e1e1e1e1e1e!8m2!3d52.3951229!4d5.2156012!16s%2Fg%2F11c5q5q5q5",
                           "_blank"
                         )
                       }
@@ -1734,14 +1740,14 @@ function App() {
                 <div
                   onClick={() =>
                     window.open(
-                      "https://www.google.com/maps/place/Bangalore,+Karnataka/@12.9767936,77.590082,11z",
+                      "https://www.google.com/maps/place/Buurtcentrum+Parkwijk/@52.3951229,5.2134263,17z/data=!3m1!4b1!4m6!3m5!1s0x47c619e1e1e1e1e1:0x1e1e1e1e1e1e1e1e!8m2!3d52.3951229!4d5.2156012!16s%2Fg%2F11c5q5q5q5",
                       "_blank"
                     )
                   }
                   className="bg-almond rounded-3xl h-72 md:h-[28rem] overflow-hidden cursor-pointer relative group transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] scroll-animate"
                 >
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497699.9973874144!2d77.35074421903857!3d12.95384772557775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.1234567890123!2d5.2134263!3d52.3951229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c619e1e1e1e1e1%3A0x1e1e1e1e1e1e1e1e!2sBuurtcentrum%20Parkwijk!5e0!3m2!1sen!2snl!4v1234567890123!5m2!1sen!2snl"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
