@@ -65,9 +65,9 @@ function App() {
   const [contactFormData, setContactFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+    number: "",
     category: "",
-    message: "",
+    query: "",
   });
 
   // Loader effect
@@ -84,13 +84,15 @@ function App() {
     setIsSubmitting(true);
 
     try {
-      // Use /api/send-email for both local and Vercel deployment
-      const apiUrl = process.env.REACT_APP_API_URL || "/api/send-email";
+      // Use environment variable for API URL, fallback to localhost for development
+      const apiUrl =
+        process.env.REACT_APP_API_URL;
 
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Origin: window.location.origin,
         },
         body: JSON.stringify(contactFormData),
       });
@@ -102,9 +104,9 @@ function App() {
         setContactFormData({
           name: "",
           email: "",
-          phone: "",
+          number: "",
           category: "",
-          message: "",
+          query: "",
         });
         setTimeout(() => setShowContactPopup(false), 4000);
       } else {
@@ -1463,11 +1465,11 @@ function App() {
                       </label>
                       <input
                         type="tel"
-                        name="phone"
+                        name="number"
                         required
-                        value={contactFormData.phone}
+                        value={contactFormData.number}
                         onChange={handleInputChange}
-                        placeholder="+1 (555) 000-0000"
+                        placeholder="+31-612345678"
                         className="w-full p-4 border-2 border-matcha rounded-xl text-base md:text-lg focus:outline-none focus:border-pistache transition-all duration-300 hover:border-carob"
                       />
                     </div>
@@ -1541,9 +1543,9 @@ function App() {
                       Your Message *
                     </label>
                     <textarea
-                      name="message"
+                      name="query"
                       required
-                      value={contactFormData.message}
+                      value={contactFormData.query}
                       onChange={handleInputChange}
                       placeholder="Tell us how we can help you..."
                       rows="6"
@@ -1575,9 +1577,7 @@ function App() {
                       1326 CP Almere, Netherlands
                     </p>
                     <p className="text-gray-700 mb-6 text-base md:text-lg">
-                      Phone: (555) 123-YOGA
-                      <br />
-                      Email: hello@saatvikyoga.com
+                      Email: satvik.yoga11@gmail.com
                     </p>
 
                     <button
