@@ -85,8 +85,7 @@ function App() {
 
     try {
       // Use environment variable for API URL, fallback to localhost for development
-      const apiUrl =
-        process.env.REACT_APP_API_URL;
+      const apiUrl = process.env.REACT_APP_API_URL;
 
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -1598,7 +1597,7 @@ function App() {
                   <div
                     onClick={() =>
                       window.open(
-                        "https://www.google.com/maps/place/Buurtcentrum+Parkwijk/@52.3951229,5.2134263,17z/data=!3m1!4b1!4m6!3m5!1s0x47c619e1e1e1e1e1:0x1e1e1e1e1e1e1e1e!8m2!3d52.3951229!4d5.2156012!16s%2Fg%2F11c5q5q5q5",
+                        "https://maps.app.goo.gl/7kLB4qGCPoa8upFW9",
                         "_blank"
                       )
                     }
@@ -1724,7 +1723,7 @@ function App() {
                     <button
                       onClick={() =>
                         window.open(
-                          "https://www.google.com/maps/place/Buurtcentrum+Parkwijk/@52.3951229,5.2134263,17z/data=!3m1!4b1!4m6!3m5!1s0x47c619e1e1e1e1e1:0x1e1e1e1e1e1e1e1e!8m2!3d52.3951229!4d5.2156012!16s%2Fg%2F11c5q5q5q5",
+                          "https://maps.app.goo.gl/7kLB4qGCPoa8upFW9",
                           "_blank"
                         )
                       }
@@ -1740,7 +1739,7 @@ function App() {
                 <div
                   onClick={() =>
                     window.open(
-                      "https://www.google.com/maps/place/Buurtcentrum+Parkwijk/@52.3951229,5.2134263,17z/data=!3m1!4b1!4m6!3m5!1s0x47c619e1e1e1e1e1:0x1e1e1e1e1e1e1e1e!8m2!3d52.3951229!4d5.2156012!16s%2Fg%2F11c5q5q5q5",
+                      "https://maps.app.goo.gl/7kLB4qGCPoa8upFW9",
                       "_blank"
                     )
                   }
