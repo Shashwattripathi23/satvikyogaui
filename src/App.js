@@ -1,7 +1,7 @@
 import logo from "./assets/newlogo.png";
 import yoga1 from "./assets/yoga1.jpg";
 import yoga2 from "./assets/yoga2.png";
-import drycupping from "./assets/drycupping.png";
+import drycupping from "./assets/cupping2.png";
 import kativasti from "./assets/kativasti.png";
 import Shankhaprakshalan from "./assets/Shankhaprakshalan.png";
 import tratakkriya from "./assets/TratakKriya.png";
@@ -11,7 +11,8 @@ import ashtangayoga from "./assets/ashtangayoga.png";
 import coupleyoga from "./assets/coupleyoga.png";
 import senioryoga from "./assets/senioryoga.png";
 import mantrajapa from "./assets/mantrajapa.png";
-import logo3 from "./assets/logo6.png";
+import logo3 from "./assets/newlogofinal.png";
+import onlineyoga from "./assets/onlineyoga.png";
 
 import "@fontsource/poppins/300.css";
 import "@fontsource/poppins/400.css";
@@ -45,6 +46,10 @@ import {
   FaChevronLeft,
   FaChevronRight,
   FaSpa,
+  FaEuroSign,
+  FaLaptop,
+  FaWallet,
+  FaWalking,
 } from "react-icons/fa";
 import { GiMeditation } from "react-icons/gi";
 
@@ -138,10 +143,10 @@ function App() {
     const handleScroll = () => {
       const sections = [
         "home",
-        "about",
         "services",
         "special-services",
         "reviews",
+        "about",
         "contact",
       ];
       const scrollPosition = window.scrollY + 100; // Offset for header
@@ -230,6 +235,7 @@ function App() {
     { icon: <FaHome />, label: "Home", href: "#home" },
     { icon: <GiMeditation />, label: "Services", href: "#services" },
     { icon: <FaSpa />, label: "Special Services", href: "#special-services" },
+    { icon: <span>💰</span>, label: "Pricing", href: "#pricing" },
     { icon: <FaStar />, label: "Reviews", href: "#reviews" },
     { icon: <FaPhone />, label: "Contact Us", href: "#contact" },
     // { icon: <FaMapMarkerAlt />, label: "Location", href: "#location" },
@@ -244,7 +250,7 @@ function App() {
       icon: "",
       duration: "60 mins",
       image: hathayoga,
-      schedule: ["Tuesday: 19:00-20:00 hrs", "Sunday: 19:00-20:00 hrs"],
+      schedule: ["Tuesday: 19:00-20:00 CEST", "Sunday: 19:00-20:00 CEST"],
       benefits: [
         "Builds strength and flexibility",
         "Improves body alignment",
@@ -258,7 +264,7 @@ function App() {
       fullDesc:
         "Ashtanga Yoga is a dynamic and disciplined practice that synchronizes breath with a flowing sequence of postures. It follows a structured series that builds heat, strength, and focus while deepening the connection between body and mind. My classes guide you through mindful movement and conscious breathing — cultivating endurance, clarity, and a meditative rhythm that continues beyond the mat.",
       icon: "",
-      duration: "75 mins",
+      duration: "60 mins",
       image: ashtangayoga,
       schedule: ["Upcoming Lessons"],
       benefits: [
@@ -275,7 +281,7 @@ function App() {
       fullDesc:
         "Couple or Partner Yoga is a joyful and connecting practice that brings two people together through movement, breath, and awareness. It focuses on building trust, communication, and balance — both physical and emotional — as partners support and mirror each other in shared postures. Whether practiced with a partner, friend, or loved one, this practice deepens connection, enhances flexibility and strength, and invites a sense of harmony and togetherness on and off the mat.",
       icon: "",
-      duration: "90 mins",
+      duration: "60 mins",
       image: coupleyoga,
       schedule: ["Upcoming Lessons"],
       benefits: [
@@ -308,9 +314,25 @@ function App() {
       fullDesc:
         "Mantra Japa is the meditative repetition of a sacred sound or phrase, traditionally in Sanskrit, used to focus the mind and awaken inner stillness. The rhythmic repetition of a mantra helps calm the mind, balance energy, and deepen awareness. Each mantra carries a unique intention and healing vibration, guiding you toward peace, clarity, and a deeper connection with your inner self.",
       icon: "",
-      duration: "45 mins",
+      duration: "60 mins",
       image: mantrajapa,
       schedule: ["Upcoming Lessons"],
+      benefits: [
+        "Calms the mind",
+        "Balances energy",
+        "Deepens awareness",
+        "Promotes inner peace",
+      ],
+    },
+    {
+      name: "Online Classes",
+      shortDesc: "Meditative repetition of sacred sounds for inner stillness",
+      fullDesc:
+        "This all-levels online yoga package offers twice-a-week sessions for six months, helping you build strength, flexibility, and consistency from home. You’ll progress at your own pace with supportive guidance designed for every level. At the end of the six months, we gather for an uplifting in-person yoga retreat to deepen the practice and celebrate the journey together.",
+      icon: "",
+      duration: "60 mins",
+      image: onlineyoga,
+      schedule: ["Tuesday: 18:30-19:30 CEST", "Friday: 18:30-19:30 CEST"],
       benefits: [
         "Calms the mind",
         "Balances energy",
@@ -490,7 +512,7 @@ function App() {
             <div className="flex items-center gap-2 md:gap-4">
               <img
                 src={logo3}
-                className="h-8 md:h-12 w-auto"
+                className="h-8 md:h-12 w-auto rounded-full"
                 alt="Saatvik Yoga"
               />
               <h1
@@ -635,182 +657,6 @@ function App() {
                     <div className="w-8 h-8 rounded-full bg-[#8A96A0] shadow-lg"></div>
                     <div className="w-8 h-8 rounded-full bg-[#5B4232] shadow-lg"></div>
                     <div className="w-8 h-8 rounded-full bg-[#2B2B2B] shadow-lg"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* About Me Section */}
-          <section className="py-16 md:py-24 bg-gradient-to-b from-white via-almond-light to-white relative rounded-b-[100px]  ">
-            <div className=" mx-auto px-4 md:px-8  border-black">
-              <div className="flex items-center justify-center gap-4 mb-12 md:mb-16 scroll-animate">
-                {/* Left decorations */}
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-matcha"></div>
-                  <div className="w-3 h-3 rounded-full bg-matcha"></div>
-                  <div
-                    className="w-16 h-1 bg-gradient-to-r from-transparent to-pistache"
-                    style={{ clipPath: "polygon(0 50%, 100% 0, 100% 100%)" }}
-                  ></div>
-                </div>
-
-                <h3
-                  className="text-3xl md:text-4xl lg:text-6xl text-center text-matcha font-bold"
-                  style={{ fontFamily: "'Dancing Script', cursive" }}
-                >
-                  About Me
-                </h3>
-
-                {/* Right decorations */}
-                <div className="flex items-center gap-2">
-                  <div
-                    className="w-16 h-1 bg-gradient-to-l from-transparent to-pistache"
-                    style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}
-                  ></div>
-                  <div className="w-3 h-3 rounded-full bg-matcha"></div>
-                  <div className="w-2 h-2 rounded-full bg-matcha"></div>
-                </div>
-              </div>
-
-              <div className="relative">
-                {/* Mobile: Overlapping Image & Content */}
-                <div className="md:hidden relative scroll-animate">
-                  <div className="relative mb-8">
-                    <img
-                      src={yoga2}
-                      alt="Meenakshi - Yoga Instructor"
-                      className="w-full h-80 object-cover rounded-3xl shadow-xl"
-                    />
-                  </div>
-                  <div className="bg-white p-6 rounded-3xl shadow-xl -mt-16 mx-4 relative z-10">
-                    <div className="space-y-4 text-gray-700 leading-relaxed text-sm">
-                      <p>
-                        Hello and welcome! I'm{" "}
-                        <span className="font-semibold text-matcha">
-                          Meenakshi
-                        </span>{" "}
-                        — a RYT 500-hour certified yoga teacher whose journey
-                        began in a completely different world: Electrical
-                        Engineering. After earning my degree and working in a
-                        structured, logic-driven field, I began to feel a quiet
-                        pull toward something that spoke to my heart — something
-                        more connected, balanced, and fulfilling.
-                      </p>
-                      <p>
-                        Yoga entered my life as a way to find calm and clarity
-                        amidst a busy routine, but over time it became so much
-                        more. It opened a doorway to self-awareness, healing,
-                        and a deeper connection with life itself. What started
-                        as a personal exploration soon turned into a lifelong
-                        calling.
-                      </p>
-                      {showFullAbout && (
-                        <>
-                          <p>
-                            To understand yoga and the human body more deeply, I
-                            trained in various forms of yoga — including Hatha,
-                            Ashtanga, and restorative practices — each offering
-                            its own wisdom about movement, breath, and
-                            alignment. Along the way, I also trained in
-                            Ayurvedic cleansing and healing practices, learning
-                            how ancient wisdom supports the body's natural
-                            balance and renewal.
-                          </p>
-                          <p>
-                            Transitioning from engineering to yoga wasn't an
-                            easy decision, but it was the most authentic one.
-                            Today, I bring both structure and sensitivity into
-                            my classes — creating a space where everyone,
-                            regardless of experience, can move, breathe, and
-                            reconnect with themselves on a deeper level.
-                          </p>
-                        </>
-                      )}
-                      <button
-                        onClick={() => setShowFullAbout(!showFullAbout)}
-                        className="bg-gradient-to-r from-matcha to-matcha text-white px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 shadow-lg mt-4"
-                      >
-                        {showFullAbout ? "Read Less" : "Read More"}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Desktop: Image Left, Content Right */}
-                <div className="hidden md:flex gap-8 items-center justify-between w-full pt-8">
-                  <div className="w-2/5 relative flex justify-start scroll-animate">
-                    <div className="relative w-full max-w-lg ml-24  border-black ">
-                      {/* Decorative element (move this before image and use -z-10) */}
-                      <div className="absolute -z-0 top-8 -left-8 w-full h-full bg-chai-light rounded-[3rem] opacity-40"></div>
-
-                      {/* Color dots */}
-                      <div className="absolute bottom-8 -left-24 flex flex-col gap-4 z-10">
-                        <div className="w-8 h-8 rounded-full bg-[#F7C282] shadow-lg"></div>
-                        <div className="w-8 h-8 rounded-full bg-[#8A96A0] shadow-lg"></div>
-                        <div className="w-8 h-8 rounded-full bg-[#5B4232] shadow-lg"></div>
-                        <div className="w-8 h-8 rounded-full bg-[#2B2B2B] shadow-lg"></div>
-                      </div>
-
-                      {/* Image */}
-                      <div
-                        className="w-full aspect-[3/4] rounded-[3rem] overflow-hidden relative z-10"
-                        style={{
-                          clipPath:
-                            "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)",
-                          boxShadow:
-                            "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 20px -5px rgba(0, 0, 0, 0.15)",
-                        }}
-                      >
-                        <img
-                          src={yoga2}
-                          alt="Meenakshi - Yoga Instructor"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="w-3/5 bg-white p-8 lg:p-12 rounded-3xl shadow-xl scroll-animate">
-                    <div className="space-y-6 text-gray-700 leading-relaxed text-base lg:text-lg">
-                      <p>
-                        Hello and welcome! I'm{" "}
-                        <span className="font-semibold text-matcha">
-                          Meenakshi
-                        </span>{" "}
-                        — a RYT 500-hour certified yoga teacher whose journey
-                        began in a completely different world: Electrical
-                        Engineering. After earning my degree and working in a
-                        structured, logic-driven field, I began to feel a quiet
-                        pull toward something that spoke to my heart — something
-                        more connected, balanced, and fulfilling.
-                      </p>
-                      <p>
-                        Yoga entered my life as a way to find calm and clarity
-                        amidst a busy routine, but over time it became so much
-                        more. It opened a doorway to self-awareness, healing,
-                        and a deeper connection with life itself. What started
-                        as a personal exploration soon turned into a lifelong
-                        calling.
-                      </p>
-                      <p>
-                        To understand yoga and the human body more deeply, I
-                        trained in various forms of yoga — including Hatha,
-                        Ashtanga, and restorative practices — each offering its
-                        own wisdom about movement, breath, and alignment. Along
-                        the way, I also trained in Ayurvedic cleansing and
-                        healing practices, learning how ancient wisdom supports
-                        the body's natural balance and renewal.
-                      </p>
-                      <p>
-                        Transitioning from engineering to yoga wasn't an easy
-                        decision, but it was the most authentic one. Today, I
-                        bring both structure and sensitivity into my classes —
-                        creating a space where everyone, regardless of
-                        experience, can move, breathe, and reconnect with
-                        themselves on a deeper level.
-                      </p>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -1266,10 +1112,386 @@ function App() {
             </div>
           </section>
 
+          {/* About Me Section */}
+          <section className="py-16 md:py-24 bg-gradient-to-b from-almond-light via-white to-almond-light relative -b-[100px]  ">
+            <div className=" mx-auto px-4 md:px-8  border-black">
+              <div className="flex items-center justify-center gap-4 mb-12 md:mb-16 scroll-animate">
+                {/* Left decorations */}
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-matcha"></div>
+                  <div className="w-3 h-3 rounded-full bg-matcha"></div>
+                  <div
+                    className="w-16 h-1 bg-gradient-to-r from-transparent to-pistache"
+                    style={{ clipPath: "polygon(0 50%, 100% 0, 100% 100%)" }}
+                  ></div>
+                </div>
+
+                <h3
+                  className="text-3xl md:text-4xl lg:text-6xl text-center text-matcha font-bold"
+                  style={{ fontFamily: "'Dancing Script', cursive" }}
+                >
+                  About Me
+                </h3>
+
+                {/* Right decorations */}
+                <div className="flex items-center gap-2">
+                  <div
+                    className="w-16 h-1 bg-gradient-to-l from-transparent to-pistache"
+                    style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}
+                  ></div>
+                  <div className="w-3 h-3 rounded-full bg-matcha"></div>
+                  <div className="w-2 h-2 rounded-full bg-matcha"></div>
+                </div>
+              </div>
+
+              <div className="relative">
+                {/* Mobile: Overlapping Image & Content */}
+                <div className="md:hidden relative scroll-animate">
+                  <div className="relative mb-8">
+                    <img
+                      src={yoga2}
+                      alt="Meenakshi - Yoga Instructor"
+                      className="w-full h-80 object-cover rounded-3xl shadow-xl"
+                    />
+                  </div>
+                  <div className="bg-white p-6 rounded-3xl shadow-xl -mt-16 mx-4 relative z-10">
+                    <div className="space-y-4 text-gray-700 leading-relaxed text-sm">
+                      <p>
+                        Hello and welcome! I'm{" "}
+                        <span className="font-semibold text-matcha">
+                          Meenakshi
+                        </span>{" "}
+                        — a RYT 500-hour certified yoga teacher whose journey
+                        began in a completely different world: Electrical
+                        Engineering. After earning my degree and working in a
+                        structured, logic-driven field, I began to feel a quiet
+                        pull toward something that spoke to my heart — something
+                        more connected, balanced, and fulfilling.
+                      </p>
+                      <p>
+                        Yoga entered my life as a way to find calm and clarity
+                        amidst a busy routine, but over time it became so much
+                        more. It opened a doorway to self-awareness, healing,
+                        and a deeper connection with life itself. What started
+                        as a personal exploration soon turned into a lifelong
+                        calling.
+                      </p>
+                      {showFullAbout && (
+                        <>
+                          <p>
+                            To understand yoga and the human body more deeply, I
+                            trained in various forms of yoga — including Hatha,
+                            Ashtanga, and restorative practices — each offering
+                            its own wisdom about movement, breath, and
+                            alignment. Along the way, I also trained in
+                            Ayurvedic cleansing and healing practices, learning
+                            how ancient wisdom supports the body's natural
+                            balance and renewal.
+                          </p>
+                          <p>
+                            Transitioning from engineering to yoga wasn't an
+                            easy decision, but it was the most authentic one.
+                            Today, I bring both structure and sensitivity into
+                            my classes — creating a space where everyone,
+                            regardless of experience, can move, breathe, and
+                            reconnect with themselves on a deeper level.
+                          </p>
+                        </>
+                      )}
+                      <button
+                        onClick={() => setShowFullAbout(!showFullAbout)}
+                        className="bg-gradient-to-r from-matcha to-matcha text-white px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 shadow-lg mt-4"
+                      >
+                        {showFullAbout ? "Read Less" : "Read More"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Desktop: Image Left, Content Right */}
+                <div className="hidden md:flex gap-8 items-center justify-between w-full pt-8">
+                  <div className="w-2/5 relative flex justify-start scroll-animate">
+                    <div className="relative w-full max-w-lg ml-24  border-black ">
+                      {/* Decorative element (move this before image and use -z-10) */}
+                      <div className="absolute -z-0 top-8 -left-8 w-full h-full bg-chai-light rounded-[3rem] opacity-40"></div>
+
+                      {/* Color dots */}
+                      <div className="absolute bottom-8 -left-24 flex flex-col gap-4 z-10">
+                        <div className="w-8 h-8 rounded-full bg-[#F7C282] shadow-lg"></div>
+                        <div className="w-8 h-8 rounded-full bg-[#8A96A0] shadow-lg"></div>
+                        <div className="w-8 h-8 rounded-full bg-[#5B4232] shadow-lg"></div>
+                        <div className="w-8 h-8 rounded-full bg-[#2B2B2B] shadow-lg"></div>
+                      </div>
+
+                      {/* Image */}
+                      <div
+                        className="w-full aspect-[3/4] rounded-[3rem] overflow-hidden relative z-10"
+                        style={{
+                          clipPath:
+                            "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)",
+                          boxShadow:
+                            "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 20px -5px rgba(0, 0, 0, 0.15)",
+                        }}
+                      >
+                        <img
+                          src={yoga2}
+                          alt="Meenakshi - Yoga Instructor"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="w-3/5 bg-white p-8 lg:p-12 rounded-3xl shadow-xl scroll-animate">
+                    <div className="space-y-6 text-gray-700 leading-relaxed text-base lg:text-lg">
+                      <p>
+                        Hello and welcome! I'm{" "}
+                        <span className="font-semibold text-matcha">
+                          Meenakshi
+                        </span>{" "}
+                        — a RYT 500-hour certified yoga teacher whose journey
+                        began in a completely different world: Electrical
+                        Engineering. After earning my degree and working in a
+                        structured, logic-driven field, I began to feel a quiet
+                        pull toward something that spoke to my heart — something
+                        more connected, balanced, and fulfilling.
+                      </p>
+                      <p>
+                        Yoga entered my life as a way to find calm and clarity
+                        amidst a busy routine, but over time it became so much
+                        more. It opened a doorway to self-awareness, healing,
+                        and a deeper connection with life itself. What started
+                        as a personal exploration soon turned into a lifelong
+                        calling.
+                      </p>
+                      <p>
+                        To understand yoga and the human body more deeply, I
+                        trained in various forms of yoga — including Hatha,
+                        Ashtanga, and restorative practices — each offering its
+                        own wisdom about movement, breath, and alignment. Along
+                        the way, I also trained in Ayurvedic cleansing and
+                        healing practices, learning how ancient wisdom supports
+                        the body's natural balance and renewal.
+                      </p>
+                      <p>
+                        Transitioning from engineering to yoga wasn't an easy
+                        decision, but it was the most authentic one. Today, I
+                        bring both structure and sensitivity into my classes —
+                        creating a space where everyone, regardless of
+                        experience, can move, breathe, and reconnect with
+                        themselves on a deeper level.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Pricing Section */}
+          <section
+            id="pricing"
+            className="py-16 md:py-24 bg-gradient-to-b from-almond-light to-white relative"
+          >
+            <div className="max-w-7xl mx-auto px-4 md:px-8">
+              <div className="flex items-center justify-center gap-4 mb-12 md:mb-16 scroll-animate">
+                {/* Left decorations */}
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-matcha"></div>
+                  <div className="w-3 h-3 rounded-full bg-matcha"></div>
+                  <div
+                    className="w-16 h-1 bg-gradient-to-r from-transparent to-pistache"
+                    style={{ clipPath: "polygon(0 50%, 100% 0, 100% 100%)" }}
+                  ></div>
+                </div>
+
+                <h3
+                  className="text-3xl md:text-4xl lg:text-6xl text-center text-matcha font-bold"
+                  style={{ fontFamily: "'Dancing Script', cursive" }}
+                >
+                  Pricing Plans
+                </h3>
+
+                {/* Right decorations */}
+                <div className="flex items-center gap-2">
+                  <div
+                    className="w-16 h-1 bg-gradient-to-l from-transparent to-pistache"
+                    style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}
+                  ></div>
+                  <div className="w-3 h-3 rounded-full bg-matcha"></div>
+                  <div className="w-2 h-2 rounded-full bg-matcha"></div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+                {/* Once a Week */}
+                <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border-2 border-transparent hover:border-matcha transition-all duration-300 scroll-animate">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-matcha rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white text-2xl">1x</span>
+                    </div>
+                    <h4 className="text-xl md:text-2xl font-bold text-matcha mb-2">
+                      Once a Week
+                    </h4>
+                    <div className="text-3xl md:text-4xl font-bold text-carob mb-1">
+                      €40
+                    </div>
+                    <div className="text-gray-600 text-sm mb-6">/month</div>
+                    <ul className="space-y-3 text-left">
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          4 classes per month
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          All yoga styles included
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          Flexible scheduling
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Twice a Week */}
+                <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border-2 border-matcha relative scroll-animate transform scale-105">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-matcha text-white px-4 py-1 rounded-full text-sm font-semibold">
+                      Most Popular
+                    </span>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-matcha rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white text-2xl">2x</span>
+                    </div>
+                    <h4 className="text-xl md:text-2xl font-bold text-matcha mb-2">
+                      Twice a Week
+                    </h4>
+                    <div className="text-3xl md:text-4xl font-bold text-carob mb-1">
+                      €60
+                    </div>
+                    <div className="text-gray-600 text-sm mb-6">/month</div>
+                    <ul className="space-y-3 text-left">
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          8 classes per month
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          All yoga styles included
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          Priority booking
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          Better value
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Drop-in */}
+                <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border-2 border-transparent hover:border-matcha transition-all duration-300 scroll-animate">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-chai rounded-full flex items-center justify-center mx-auto mb-4">
+                      <FaWalking className="text-white text-2xl" />
+                    </div>
+                    <h4 className="text-xl md:text-2xl font-bold text-matcha mb-2">
+                      Drop-in
+                    </h4>
+                    <div className="text-3xl md:text-4xl font-bold text-carob mb-1">
+                      €13
+                    </div>
+                    <div className="text-gray-600 text-sm mb-6">/class</div>
+                    <ul className="space-y-3 text-left">
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          Pay per class
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          No commitment
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          Perfect for trying
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Online Classes */}
+                <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border-2 border-transparent hover:border-matcha transition-all duration-300 scroll-animate">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-pistache rounded-full flex items-center justify-center mx-auto mb-4">
+                      <FaLaptop className="text-white text-2xl" />
+                    </div>
+                    <h4 className="text-xl md:text-2xl font-bold text-matcha mb-2">
+                      Online Classes
+                    </h4>
+                    <div className="text-3xl md:text-4xl font-bold text-carob mb-1">
+                      €50
+                    </div>
+                    <div className="text-gray-600 text-sm mb-6">/month</div>
+                    <ul className="space-y-3 text-left">
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          8 classes per month
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          From home comfort
+                        </span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-pistache">✓</span>
+                        <span className="text-gray-700 text-sm">
+                          Includes retreat
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* <div className="text-center mt-12 scroll-animate">
+                <button className="bg-gradient-to-r from-matcha to-pistache text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                  Start Your Journey
+                </button>
+              </div> */}
+            </div>
+          </section>
+
           {/* Reviews Section */}
           <section
             id="reviews"
-            className="py-16 md:py-24 bg-gradient-to-b from-almond-light to-white relative rounded-b-[100px]  pt-32 md:pt-40"
+            className="py-16 md:py-24 bg-gradient-to-b from-white via-almond-light to-white relative rounded-b-[100px]  pt-32 md:pt-40"
           >
             <div className="max-w-7xl mx-auto px-4 md:px-8">
               <div className="flex items-center justify-center gap-4 mb-12 md:mb-16 scroll-animate">
