@@ -13,6 +13,7 @@ import senioryoga from "./assets/senioryoga.png";
 import mantrajapa from "./assets/mantrajapa.png";
 import logo3 from "./assets/newlogofinal.png";
 import onlineyoga from "./assets/onlineyoga.png";
+import OfferPopup from "./components/offerpopup";
 
 import "@fontsource/poppins/300.css";
 import "@fontsource/poppins/400.css";
@@ -50,6 +51,7 @@ import {
   FaLaptop,
   FaWallet,
   FaWalking,
+  FaDollarSign,
 } from "react-icons/fa";
 import { GiMeditation } from "react-icons/gi";
 
@@ -235,7 +237,7 @@ function App() {
     { icon: <FaHome />, label: "Home", href: "#home" },
     { icon: <GiMeditation />, label: "Services", href: "#services" },
     { icon: <FaSpa />, label: "Special Services", href: "#special-services" },
-    { icon: <span>💰</span>, label: "Pricing", href: "#pricing" },
+    { icon: <FaDollarSign />, label: "Pricing", href: "#pricing" },
     { icon: <FaStar />, label: "Reviews", href: "#reviews" },
     { icon: <FaPhone />, label: "Contact Us", href: "#contact" },
     // { icon: <FaMapMarkerAlt />, label: "Location", href: "#location" },
@@ -482,6 +484,7 @@ function App() {
 
   return (
     <>
+      <OfferPopup />
       {/* Loader */}
       <div
         className={`fixed inset-0 bg-gradient-to-br from-almond-light to-almond-light z-[100] flex items-center justify-center transition-transform duration-1000 ${
@@ -699,7 +702,7 @@ function App() {
               </div>
 
               {/* Container with Tabs and Content */}
-              <div className="bg-gradient-to-br from-almond-light to-almond-light rounded-3xl shadow-2xl overflow-hidden max-w-7xl mx-auto scroll-animate">
+              <div className="bg-gradient-to-br  max-h-5xl from-almond-light to-almond-light rounded-3xl shadow-2xl overflow-hidden max-w-7xl mx-auto scroll-animate">
                 {/* Services Navigation Tabs - Inside Container */}
                 <div className="bg-black/50 backdrop-blur-sm px-0 py-0 border-b border-matcha">
                   <div
@@ -737,9 +740,9 @@ function App() {
                 </div>
 
                 {/* Selected Service Detail with Transitions */}
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
+                <div className="grid grid-cols-1  max-h-5xl lg:grid-cols-5 gap-0">
                   {/* Image Section */}
-                  <div className="lg:col-span-2 relative h-64 md:h-96 lg:h-full min-h-[400px] overflow-hidden">
+                  <div className="lg:col-span-2 relative h-64 md:h-96 lg:h-full  max-h-[800px] min-h-[400px] overflow-hidden">
                     <img
                       key={selectedService}
                       src={services[selectedService].image}
@@ -996,7 +999,7 @@ function App() {
                 {/* Selected Service Detail */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                   {/* Image Section */}
-                  <div className="relative h-64 md:h-96 lg:h-full min-h-[400px] overflow-hidden">
+                  <div className="relative h-64 md:h-96 lg:h-full max-h-[800px] min-h-[400px] overflow-hidden">
                     <img
                       key={selectedSpecialService}
                       src={specialServices[selectedSpecialService].image}
@@ -1309,7 +1312,7 @@ function App() {
                   className="text-3xl md:text-4xl lg:text-6xl text-center text-matcha font-bold"
                   style={{ fontFamily: "'Dancing Script', cursive" }}
                 >
-                  Pricing Plans
+                  Pricing
                 </h3>
 
                 {/* Right decorations */}
@@ -1338,12 +1341,12 @@ function App() {
                     </div>
                     <div className="text-gray-600 text-sm mb-6">/month</div>
                     <ul className="space-y-3 text-left">
-                      <li className="flex items-center gap-2">
+                      {/* <li className="flex items-center gap-2">
                         <span className="text-pistache">✓</span>
                         <span className="text-gray-700 text-sm">
                           4 classes per month
                         </span>
-                      </li>
+                      </li> */}
                       <li className="flex items-center gap-2">
                         <span className="text-pistache">✓</span>
                         <span className="text-gray-700 text-sm">
@@ -1379,12 +1382,12 @@ function App() {
                     </div>
                     <div className="text-gray-600 text-sm mb-6">/month</div>
                     <ul className="space-y-3 text-left">
-                      <li className="flex items-center gap-2">
+                      {/* <li className="flex items-center gap-2">
                         <span className="text-pistache">✓</span>
                         <span className="text-gray-700 text-sm">
                           8 classes per month
                         </span>
-                      </li>
+                      </li> */}
                       <li className="flex items-center gap-2">
                         <span className="text-pistache">✓</span>
                         <span className="text-gray-700 text-sm">
@@ -1457,12 +1460,7 @@ function App() {
                     </div>
                     <div className="text-gray-600 text-sm mb-6">/month</div>
                     <ul className="space-y-3 text-left">
-                      <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          8 classes per month
-                        </span>
-                      </li>
+                     
                       <li className="flex items-center gap-2">
                         <span className="text-pistache">✓</span>
                         <span className="text-gray-700 text-sm">
