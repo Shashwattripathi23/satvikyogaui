@@ -23,7 +23,7 @@ const OfferPopup = () => {
   }, []);
 
   const handleClose = () => {
-    window.scrollTo(0, 6500);
+    // window.scrollTo(0, 6500);
     setIsOpen(false);
   };
 
