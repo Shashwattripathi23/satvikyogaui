@@ -1,4 +1,4 @@
-import logo from "./assets/newlogo.png";
+// import logo from "./assets/newlogo.png";
 import yoga1 from "./assets/yoga1.jpg";
 import yoga2 from "./assets/yoga2.png";
 import drycupping from "./assets/cupping2.png";
@@ -47,10 +47,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
   FaSpa,
-  FaEuroSign,
-  FaLaptop,
-  FaWallet,
-  FaWalking,
+
   FaDollarSign,
 } from "react-icons/fa";
 import { GiMeditation } from "react-icons/gi";
@@ -63,7 +60,7 @@ function App() {
   const [showFullAbout, setShowFullAbout] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [selectedSpecialService, setSelectedSpecialService] = useState(0);
-  const [scrollElements, setScrollElements] = useState([]);
+  // const [scrollElements, setScrollElements] = useState([]);
   const [selectedService, setSelectedService] = useState(0);
   const serviceTabsRef = useRef(null);
   const specialServiceTabsRef = useRef(null);
@@ -414,32 +411,32 @@ function App() {
     },
   ];
 
-  const schedule = [
-    {
-      time: "7:00 AM",
-      class: "Hatha Yoga",
-      instructor: "Sarah M.",
-      day: "Mon-Wed-Fri",
-    },
-    {
-      time: "9:00 AM",
-      class: "Vinyasa Flow",
-      instructor: "David L.",
-      day: "Tue-Thu",
-    },
-    {
-      time: "6:00 PM",
-      class: "Yin Yoga",
-      instructor: "Lisa K.",
-      day: "Mon-Wed",
-    },
-    {
-      time: "7:30 PM",
-      class: "Meditation",
-      instructor: "Michael R.",
-      day: "All Days",
-    },
-  ];
+  // const schedule = [
+  //   {
+  //     time: "7:00 AM",
+  //     class: "Hatha Yoga",
+  //     instructor: "Sarah M.",
+  //     day: "Mon-Wed-Fri",
+  //   },
+  //   {
+  //     time: "9:00 AM",
+  //     class: "Vinyasa Flow",
+  //     instructor: "David L.",
+  //     day: "Tue-Thu",
+  //   },
+  //   {
+  //     time: "6:00 PM",
+  //     class: "Yin Yoga",
+  //     instructor: "Lisa K.",
+  //     day: "Mon-Wed",
+  //   },
+  //   {
+  //     time: "7:30 PM",
+  //     class: "Meditation",
+  //     instructor: "Michael R.",
+  //     day: "All Days",
+  //   },
+  // ];
 
   const testimonials = [
     {
@@ -1808,6 +1805,7 @@ function App() {
                     className="bg-almond rounded-3xl h-64 md:h-80 overflow-hidden cursor-pointer relative group transition-all duration-300 hover:shadow-2xl"
                   >
                     <iframe
+                     title="map1"
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.7373477875467!2d5.2433118!3d52.37518240000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c617aa8574d9ab%3A0x49a3629fa05263ac!2sCommunity%20Center%20Parkwijk!5e0!3m2!1sen!2sin!4v1762385517166!5m2!1sen!2sin"
                       width="100%"
                       height="100%"
@@ -1958,6 +1956,7 @@ function App() {
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     className="rounded-3xl"
+                    title="map2"
                   ></iframe>
 
                   {/* Overlay hover effect */}
