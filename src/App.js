@@ -1798,6 +1798,9 @@ function App() {
                     <p className="text-gray-700 mb-6 text-base md:text-lg">
                       Email: satvik.yoga11@gmail.com
                     </p>
+                    <p className="text-gray-700 mb-6 text-base md:text-lg">
+                      Phone : +31 6 44518699
+                    </p>
 
                     <button
                       onClick={() =>
@@ -1935,9 +1938,9 @@ function App() {
                       1326 CP Almere, Netherlands
                     </p>
                     <p className="text-gray-700 mb-6 text-base md:text-lg">
-                      Phone: (555) 123-YOGA
+                      Phone: +31 6 44518699
                       <br />
-                      Email: hello@saatvikyoga.com
+                      Email: satvik.yoga11@gmail.com
                     </p>
 
                     <button
