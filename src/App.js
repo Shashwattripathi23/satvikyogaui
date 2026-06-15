@@ -13,7 +13,7 @@ import senioryoga from "./assets/senioryoga.png";
 import mantrajapa from "./assets/mantrajapa.png";
 import logo3 from "./assets/newlogofinal.png";
 import onlineyoga from "./assets/onlineyoga.png";
-import OfferPopup from "./components/offerpopup";
+// import OfferPopup from "./components/offerpopup";
 
 import "@fontsource/poppins/300.css";
 import "@fontsource/poppins/400.css";
@@ -476,7 +476,7 @@ function App() {
 
   return (
     <>
-      <OfferPopup />
+      {/* <OfferPopup /> */}
       {/* Loader */}
       <div
         className={`fixed inset-0 bg-gradient-to-br from-almond-light to-almond-light z-[100] flex items-center justify-center transition-transform duration-1000 ${
