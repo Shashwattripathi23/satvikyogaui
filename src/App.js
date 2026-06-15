@@ -244,7 +244,7 @@ function App() {
       icon: "",
       duration: "60 mins",
       image: hathayoga,
-      schedule: ["Tuesday: 19:00-20:00 CEST", "Sunday: 19:00-20:00 CEST"],
+      schedule: ["Tuesday 7:00-8:00 PM"],
       benefits: [
         "Builds strength and flexibility",
         "Improves body alignment",
@@ -260,7 +260,7 @@ function App() {
       icon: "",
       duration: "60 mins",
       image: ashtangayoga,
-      schedule: ["Upcoming Lessons"],
+      schedule: ["Sunday 7:00-8:00 PM"],
       benefits: [
         "Builds heat and stamina",
         "Increases focus and discipline",
@@ -326,7 +326,7 @@ function App() {
       icon: "",
       duration: "60 mins",
       image: onlineyoga,
-      schedule: ["Tuesday: 18:30-19:30 CEST", "Friday: 18:30-19:30 CEST"],
+      schedule: ["Tuesday 6:00-7:00 AM", "Friday 6:00-7:00 AM"],
       benefits: [
         "Calms the mind",
         "Balances energy",
