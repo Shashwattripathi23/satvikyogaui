@@ -178,41 +178,33 @@ function App() {
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         const element = entry.target;
-        const rect = element.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Calculate visibility percentage
-        const visibleHeight =
-          Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
-        const elementHeight = rect.height;
-        const visibilityRatio = Math.max(
-          0,
-          Math.min(1, visibleHeight / elementHeight)
-        );
-
-        // Calculate opacity and transform based on visibility
-        let opacity = 0;
-        let translateY = 50;
-
-        if (visibilityRatio > 0.1) {
-          opacity = Math.min(1, visibilityRatio * 1.5);
-          translateY = 50 * (1 - visibilityRatio);
+        if (entry.isIntersecting) {
+          element.style.opacity = "1";
+          element.style.transform = "translateY(0) scale(1)";
+          element.style.filter = "blur(0)";
+        } else {
+          // Reset when out of view for continuous smooth scroll experience
+          element.style.opacity = "0";
+          element.style.transform = "translateY(50px) scale(0.95)";
+          element.style.filter = "blur(5px)";
         }
-
-        element.style.opacity = opacity;
-        element.style.transform = `translateY(${translateY}px)`;
       });
     };
 
     const observer = new IntersectionObserver(observerCallback, {
-      threshold: Array.from({ length: 101 }, (_, i) => i / 100),
-      rootMargin: "-50px 0px -50px 0px",
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
     });
 
     // Observe all scroll-animate elements
     const elements = document.querySelectorAll(".scroll-animate");
     elements.forEach((el) => {
-      el.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+      // Set initial state
+      el.style.opacity = "0";
+      el.style.transform = "translateY(50px) scale(0.95)";
+      el.style.filter = "blur(5px)";
+      // Add a smooth cinematic transition
+      el.style.transition = "all 0.8s cubic-bezier(0.22, 1, 0.36, 1)";
       observer.observe(el);
     });
 
@@ -742,7 +734,7 @@ function App() {
                 {/* Selected Service Detail with Transitions */}
                 <div className="grid grid-cols-1  max-h-5xl lg:grid-cols-5 gap-0">
                   {/* Image Section */}
-                  <div className="lg:col-span-2 relative h-64 md:h-96 lg:h-full  max-h-[800px] min-h-[400px] overflow-hidden">
+                  <div className="lg:col-span-2 relative h-56 md:h-96 lg:h-full overflow-hidden">
                     <img
                       key={selectedService}
                       src={services[selectedService].image}
@@ -807,7 +799,7 @@ function App() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="lg:col-span-3 p-6 md:p-8 lg:p-12 bg-white">
+                  <div className="lg:col-span-3 p-5 md:p-8 lg:p-12 bg-white">
                     <div
                       key={`content-${selectedService}`}
                       className="transition-all duration-500 ease-in-out"
@@ -999,7 +991,7 @@ function App() {
                 {/* Selected Service Detail */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                   {/* Image Section */}
-                  <div className="relative h-64 md:h-96 lg:h-full max-h-[800px] min-h-[400px] overflow-hidden">
+                  <div className="relative h-56 md:h-96 lg:h-full overflow-hidden">
                     <img
                       key={selectedSpecialService}
                       src={specialServices[selectedSpecialService].image}
@@ -1065,7 +1057,7 @@ function App() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="p-6 md:p-8 lg:p-12 bg-gradient-to-b from-white to-white">
+                  <div className="p-5 md:p-8 lg:p-12 bg-gradient-to-b from-white to-white">
                     <div
                       key={`special-content-${selectedSpecialService}`}
                       className="transition-all duration-500 ease-in-out"
@@ -1326,152 +1318,141 @@ function App() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8 max-w-6xl mx-auto items-center">
                 {/* Once a Week */}
-                <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border-2 border-transparent hover:border-matcha transition-all duration-300 scroll-animate">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-matcha rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-white text-2xl">1x</span>
-                    </div>
-                    <h4 className="text-xl md:text-2xl font-bold text-matcha mb-2">
+                <div className="relative bg-[#Fdfbf7] p-6 md:p-8 border border-[#e2d5c8] shadow-[0_4px_20px_-4px_rgba(210,195,175,0.4)] transition-all duration-500 hover:shadow-[0_8px_30px_-4px_rgba(210,195,175,0.6)] scroll-animate group hover:-translate-y-2">
+                  <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  
+                  <div className="text-center relative z-10">
+                    <h4 className="text-xl md:text-2xl font-semibold text-matcha mb-2 md:mb-3 tracking-wide" style={{ fontFamily: "'Lora', serif" }}>
                       Once a Week
                     </h4>
-                    <div className="text-3xl md:text-4xl font-bold text-carob mb-1">
-                      €40
+                    <div className="w-10 h-[1px] bg-matcha/30 mx-auto mb-4 md:mb-6"></div>
+                    <div className="flex items-start justify-center gap-1 mb-1">
+                      <span className="text-base md:text-lg font-medium text-carob mt-1 md:mt-2">€</span>
+                      <span className="text-5xl md:text-6xl font-light text-carob tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>40</span>
                     </div>
-                    <div className="text-gray-600 text-sm mb-6">/month</div>
-                    <ul className="space-y-3 text-left">
-                      {/* <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          4 classes per month
-                        </span>
-                      </li> */}
-                      <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          All yoga styles included
-                        </span>
+                    <div className="text-[#a09080] text-xs md:text-sm mb-6 md:mb-8 italic" style={{ fontFamily: "'Lora', serif" }}>per month</div>
+                    
+                    <ul className="space-y-3 md:space-y-4 text-left mb-6 md:mb-8">
+                      <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-pistache mt-1.5 md:mt-2 shrink-0"></div>
+                        <span className="text-[#5a4f43] text-sm leading-snug">All yoga styles included</span>
                       </li>
-                      <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          Flexible scheduling
-                        </span>
+                      <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-pistache mt-1.5 md:mt-2 shrink-0"></div>
+                        <span className="text-[#5a4f43] text-sm leading-snug">Flexible scheduling</span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                {/* Twice a Week */}
-                <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border-2 border-matcha relative scroll-animate transform scale-105">
+                {/* Twice a Week (Most Popular) */}
+                <div className="relative bg-matcha p-6 md:p-8 shadow-[0_8px_30px_rgba(91,112,82,0.3)] scroll-animate transform md:scale-105 z-10 transition-all duration-500 hover:shadow-[0_12px_40px_rgba(91,112,82,0.4)] hover:-translate-y-2">
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-matcha text-white px-4 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-pistache text-white px-4 md:px-5 py-1 md:py-1.5 text-[10px] md:text-xs tracking-widest uppercase font-semibold border border-white/20 shadow-md whitespace-nowrap" style={{ fontFamily: "'Inter', sans-serif" }}>
                       Most Popular
                     </span>
                   </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-matcha rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-white text-2xl">2x</span>
-                    </div>
-                    <h4 className="text-xl md:text-2xl font-bold text-matcha mb-2">
+                  
+                  <div className="absolute top-2 left-2 right-2 bottom-2 border border-white/20 pointer-events-none"></div>
+                  
+                  <div className="text-center relative z-10 pt-4">
+                    <h4 className="text-xl md:text-2xl font-semibold text-white mb-2 md:mb-3 tracking-wide" style={{ fontFamily: "'Lora', serif" }}>
                       Twice a Week
                     </h4>
-                    <div className="text-3xl md:text-4xl font-bold text-carob mb-1">
-                      €60
+                    <div className="w-10 h-[1px] bg-white/40 mx-auto mb-4 md:mb-6"></div>
+                    <div className="flex items-start justify-center gap-1 mb-1">
+                      <span className="text-base md:text-lg font-medium text-[#e8f0e4] mt-1 md:mt-2">€</span>
+                      <span className="text-5xl md:text-6xl font-light text-white tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>60</span>
                     </div>
-                    <div className="text-gray-600 text-sm mb-6">/month</div>
-                    <ul className="space-y-3 text-left">
-                      {/* <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          8 classes per month
-                        </span>
-                      </li> */}
-                      <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          All yoga styles included
-                        </span>
+                    <div className="text-[#e8f0e4]/80 text-xs md:text-sm mb-6 md:mb-8 italic" style={{ fontFamily: "'Lora', serif" }}>per month</div>
+                    
+                    <ul className="space-y-3 md:space-y-4 text-left mb-6 md:mb-8">
+                      <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/70 mt-1.5 md:mt-2 shrink-0"></div>
+                        <span className="text-white/90 text-sm leading-snug">All yoga styles included</span>
                       </li>
-                      <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          Priority booking
-                        </span>
+                      <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/70 mt-1.5 md:mt-2 shrink-0"></div>
+                        <span className="text-white/90 text-sm leading-snug">Priority booking</span>
                       </li>
-                      <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          Better value
-                        </span>
+                      <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/70 mt-1.5 md:mt-2 shrink-0"></div>
+                        <span className="text-white/90 text-sm leading-snug">Best overall value</span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
                 {/* Drop-in */}
-                <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border-2 border-transparent hover:border-matcha transition-all duration-300 scroll-animate">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-chai rounded-full flex items-center justify-center mx-auto mb-4">
-                      <FaWalking className="text-white text-2xl" />
-                    </div>
-                    <h4 className="text-xl md:text-2xl font-bold text-matcha mb-2">
+                <div className="relative bg-[#Fdfbf7] p-6 md:p-8 border border-[#e2d5c8] shadow-[0_4px_20px_-4px_rgba(210,195,175,0.4)] transition-all duration-500 hover:shadow-[0_8px_30px_-4px_rgba(210,195,175,0.6)] scroll-animate group hover:-translate-y-2">
+                  <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  
+                  <div className="text-center relative z-10">
+                    <h4 className="text-xl md:text-2xl font-semibold text-matcha mb-2 md:mb-3 tracking-wide" style={{ fontFamily: "'Lora', serif" }}>
                       Drop-in
                     </h4>
-                    <div className="text-3xl md:text-4xl font-bold text-carob mb-1">
-                      €13
+                    <div className="w-10 h-[1px] bg-matcha/30 mx-auto mb-4 md:mb-6"></div>
+                    <div className="flex items-start justify-center gap-1 mb-1">
+                      <span className="text-base md:text-lg font-medium text-carob mt-1 md:mt-2">€</span>
+                      <span className="text-5xl md:text-6xl font-light text-carob tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>13</span>
                     </div>
-                    <div className="text-gray-600 text-sm mb-6">/class</div>
-                    <ul className="space-y-3 text-left">
-                      <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          Pay per class
-                        </span>
+                    <div className="text-[#a09080] text-xs md:text-sm mb-6 md:mb-8 italic" style={{ fontFamily: "'Lora', serif" }}>per class</div>
+                    
+                    <ul className="space-y-3 md:space-y-4 text-left mb-6 md:mb-8">
+                      <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-pistache mt-1.5 md:mt-2 shrink-0"></div>
+                        <span className="text-[#5a4f43] text-sm leading-snug">Pay per class</span>
                       </li>
-                      <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          No commitment
-                        </span>
+                      <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-pistache mt-1.5 md:mt-2 shrink-0"></div>
+                        <span className="text-[#5a4f43] text-sm leading-snug">No commitment</span>
                       </li>
-                      <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          Perfect for trying
-                        </span>
+                      <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-pistache mt-1.5 md:mt-2 shrink-0"></div>
+                        <span className="text-[#5a4f43] text-sm leading-snug">Perfect for trying out</span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
                 {/* Online Classes */}
-                <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border-2 border-transparent hover:border-matcha transition-all duration-300 scroll-animate">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-pistache rounded-full flex items-center justify-center mx-auto mb-4">
-                      <FaLaptop className="text-white text-2xl" />
-                    </div>
-                    <h4 className="text-xl md:text-2xl font-bold text-matcha mb-2">
-                      Online Classes
+                <div className="relative bg-[#Fdfbf7] p-6 md:p-8 border border-[#e2d5c8] shadow-[0_4px_20px_-4px_rgba(210,195,175,0.4)] transition-all duration-500 hover:shadow-[0_8px_30px_-4px_rgba(210,195,175,0.6)] scroll-animate group hover:-translate-y-2">
+                  <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-matcha/40 transition-all duration-300 group-hover:w-12 group-hover:h-12"></div>
+                  
+                  <div className="text-center relative z-10">
+                    <h4 className="text-xl md:text-2xl font-semibold text-matcha mb-2 md:mb-3 tracking-wide" style={{ fontFamily: "'Lora', serif" }}>
+                      Online
                     </h4>
-                    <div className="text-3xl md:text-4xl font-bold text-carob mb-1">
-                      €50
+                    <div className="w-10 h-[1px] bg-matcha/30 mx-auto mb-4 md:mb-6"></div>
+                    <div className="flex items-start justify-center gap-1 mb-1">
+                      <span className="text-base md:text-lg font-medium text-carob mt-1 md:mt-2">€</span>
+                      <span className="text-5xl md:text-6xl font-light text-carob tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>50</span>
                     </div>
-                    <div className="text-gray-600 text-sm mb-6">/month</div>
-                    <ul className="space-y-3 text-left">
-                     
-                      <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          From home comfort
-                        </span>
+                    <div className="text-[#a09080] text-xs md:text-sm mb-6 md:mb-8 italic" style={{ fontFamily: "'Lora', serif" }}>per month</div>
+                    
+                    <ul className="space-y-3 md:space-y-4 text-left mb-6 md:mb-8">
+                      <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-pistache mt-1.5 md:mt-2 shrink-0"></div>
+                        <span className="text-[#5a4f43] text-sm leading-snug">Practice from home</span>
                       </li>
-                      <li className="flex items-center gap-2">
-                        <span className="text-pistache">✓</span>
-                        <span className="text-gray-700 text-sm">
-                          Includes retreat
-                        </span>
+                      <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-pistache mt-1.5 md:mt-2 shrink-0"></div>
+                        <span className="text-[#5a4f43] text-sm leading-snug">Access to community</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-pistache mt-1.5 md:mt-2 shrink-0"></div>
+                        <span className="text-[#5a4f43] text-sm leading-snug">Includes yearly retreat</span>
                       </li>
                     </ul>
                   </div>
@@ -1489,7 +1470,7 @@ function App() {
           {/* Reviews Section */}
           <section
             id="reviews"
-            className="py-16 md:py-24 bg-gradient-to-b from-white via-almond-light to-white relative rounded-b-[100px]  pt-32 md:pt-40"
+            className="py-12 md:py-24 bg-gradient-to-b from-white via-almond-light to-white relative rounded-b-[100px] pt-16 md:pt-40"
           >
             <div className="max-w-7xl mx-auto px-4 md:px-8">
               <div className="flex items-center justify-center gap-4 mb-12 md:mb-16 scroll-animate">
@@ -1544,7 +1525,7 @@ function App() {
                 </button>
 
                 {/* Review Card */}
-                <div className="bg-gradient-to-br from-white to-almond-light rounded-3xl p-8 md:p-12 shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-vanilla transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] scroll-animate">
+                <div className="bg-gradient-to-br from-white to-almond-light rounded-3xl p-6 md:p-12 shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-vanilla transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] scroll-animate">
                   <div
                     key={currentTestimonial}
                     className="transition-all duration-500 ease-in-out"
@@ -1610,7 +1591,7 @@ function App() {
           {/* Contact Section */}
           <section
             id="contact"
-            className="py-16 md:py-24 bg-gradient-to-b from-white via-almond-light to-almond-light -mt-24 pt-32 md:pt-40"
+            className="py-12 md:py-24 bg-gradient-to-b from-white via-almond-light to-almond-light -mt-16 md:-mt-24 pt-20 md:pt-40"
           >
             <div className="max-w-7xl mx-auto px-4 md:px-8">
               <div className="flex items-center justify-center gap-4 mb-12 md:mb-16 scroll-animate">
@@ -1644,11 +1625,11 @@ function App() {
                 {/* Contact Form */}
                 <form
                   onSubmit={handleContactSubmit}
-                  className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl border-2 border-almond scroll-animate"
+                  className="bg-white p-5 md:p-12 rounded-3xl shadow-2xl border-2 border-almond scroll-animate"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
                     <div>
-                      <label className="block text-matcha font-semibold mb-2 text-sm md:text-base">
+                      <label className="block text-matcha font-semibold mb-1 md:mb-2 text-sm md:text-base">
                         Full Name *
                       </label>
                       <input
@@ -1658,11 +1639,11 @@ function App() {
                         value={contactFormData.name}
                         onChange={handleInputChange}
                         placeholder="Enter your name"
-                        className="w-full p-4 border-2 border-matcha rounded-xl text-base md:text-lg focus:outline-none focus:border-pistache transition-all duration-300 hover:border-carob"
+                        className="w-full p-3 md:p-4 border-2 border-matcha rounded-xl text-sm md:text-lg focus:outline-none focus:border-pistache transition-all duration-300 hover:border-carob"
                       />
                     </div>
                     <div>
-                      <label className="block text-matcha font-semibold mb-2 text-sm md:text-base">
+                      <label className="block text-matcha font-semibold mb-1 md:mb-2 text-sm md:text-base">
                         Email Address *
                       </label>
                       <input
@@ -1672,14 +1653,14 @@ function App() {
                         value={contactFormData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
-                        className="w-full p-4 border-2 border-matcha rounded-xl text-base md:text-lg focus:outline-none focus:border-pistache transition-all duration-300 hover:border-carob"
+                        className="w-full p-3 md:p-4 border-2 border-matcha rounded-xl text-sm md:text-lg focus:outline-none focus:border-pistache transition-all duration-300 hover:border-carob"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
                     <div>
-                      <label className="block text-matcha font-semibold mb-2 text-sm md:text-base">
+                      <label className="block text-matcha font-semibold mb-1 md:mb-2 text-sm md:text-base">
                         Phone Number *
                       </label>
                       <input
@@ -1689,11 +1670,11 @@ function App() {
                         value={contactFormData.number}
                         onChange={handleInputChange}
                         placeholder="+31-612345678"
-                        className="w-full p-4 border-2 border-matcha rounded-xl text-base md:text-lg focus:outline-none focus:border-pistache transition-all duration-300 hover:border-carob"
+                        className="w-full p-3 md:p-4 border-2 border-matcha rounded-xl text-sm md:text-lg focus:outline-none focus:border-pistache transition-all duration-300 hover:border-carob"
                       />
                     </div>
                     <div>
-                      <label className="block text-matcha font-semibold mb-2 text-sm md:text-base">
+                      <label className="block text-matcha font-semibold mb-1 md:mb-2 text-sm md:text-base">
                         Category *
                       </label>
                       <div className="relative">
@@ -1702,7 +1683,7 @@ function App() {
                           required
                           value={contactFormData.category}
                           onChange={handleInputChange}
-                          className="w-full p-4 border-2 border-matcha rounded-xl text-base md:text-lg focus:outline-none focus:border-pistache transition-all duration-300 hover:border-carob bg-gradient-to-r from-white to-almond-light appearance-none cursor-pointer pr-12 font-medium text-gray-700 shadow-sm hover:shadow-md"
+                          className="w-full p-3 md:p-4 border-2 border-matcha rounded-xl text-sm md:text-lg focus:outline-none focus:border-pistache transition-all duration-300 hover:border-carob bg-gradient-to-r from-white to-almond-light appearance-none cursor-pointer pr-10 font-medium text-gray-700 shadow-sm hover:shadow-md"
                           style={{
                             backgroundImage: "none",
                           }}
@@ -1738,9 +1719,9 @@ function App() {
                             Other
                           </option>
                         </select>
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <div className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                           <svg
-                            className="w-5 h-5 text-pistache"
+                            className="w-4 h-4 md:w-5 md:h-5 text-pistache"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -1757,8 +1738,8 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="mb-8">
-                    <label className="block text-matcha font-semibold mb-2 text-sm md:text-base">
+                  <div className="mb-6 md:mb-8">
+                    <label className="block text-matcha font-semibold mb-1 md:mb-2 text-sm md:text-base">
                       Your Message *
                     </label>
                     <textarea
@@ -1767,15 +1748,15 @@ function App() {
                       value={contactFormData.query}
                       onChange={handleInputChange}
                       placeholder="Tell us how we can help you..."
-                      rows="6"
-                      className="w-full p-4 border-2 border-matcha rounded-xl text-base md:text-lg resize-vertical focus:outline-none focus:border-carob transition-all duration-300 hover:border-carob"
+                      rows="4"
+                      className="w-full p-3 md:p-4 border-2 border-matcha rounded-xl text-sm md:text-lg resize-vertical focus:outline-none focus:border-carob transition-all duration-300 hover:border-carob"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-gradient-to-r from-matcha to-matcha text-white px-10 md:px-14 py-4 md:py-5 rounded-full text-lg md:text-xl font-semibold mx-auto block transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl hover:from-pistache hover:to-pistache disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-gradient-to-r from-matcha to-matcha text-white px-8 md:px-14 py-3 md:py-5 rounded-full text-base md:text-xl font-semibold mx-auto block transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl hover:from-pistache hover:to-pistache disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
