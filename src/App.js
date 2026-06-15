@@ -144,6 +144,8 @@ function App() {
         "home",
         "services",
         "special-services",
+        "schedule",
+        "pricing",
         "reviews",
         "about",
         "contact",
@@ -226,6 +228,7 @@ function App() {
     { icon: <FaHome />, label: "Home", href: "#home" },
     { icon: <GiMeditation />, label: "Services", href: "#services" },
     { icon: <FaSpa />, label: "Special Services", href: "#special-services" },
+    { icon: <FaCalendarAlt />, label: "Schedule", href: "#schedule" },
     { icon: <FaDollarSign />, label: "Pricing", href: "#pricing" },
     { icon: <FaStar />, label: "Reviews", href: "#reviews" },
     { icon: <FaPhone />, label: "Contact Us", href: "#contact" },
@@ -411,32 +414,50 @@ function App() {
     },
   ];
 
-  // const schedule = [
-  //   {
-  //     time: "7:00 AM",
-  //     class: "Hatha Yoga",
-  //     instructor: "Sarah M.",
-  //     day: "Mon-Wed-Fri",
-  //   },
-  //   {
-  //     time: "9:00 AM",
-  //     class: "Vinyasa Flow",
-  //     instructor: "David L.",
-  //     day: "Tue-Thu",
-  //   },
-  //   {
-  //     time: "6:00 PM",
-  //     class: "Yin Yoga",
-  //     instructor: "Lisa K.",
-  //     day: "Mon-Wed",
-  //   },
-  //   {
-  //     time: "7:30 PM",
-  //     class: "Meditation",
-  //     instructor: "Michael R.",
-  //     day: "All Days",
-  //   },
-  // ];
+  const weeklySchedule = [
+    {
+      day: "Monday",
+      shortDay: "Mon",
+      classes: []
+    },
+    {
+      day: "Tuesday",
+      shortDay: "Tue",
+      classes: [
+        { time: "6:00 - 7:00 AM", name: "Online Yoga", type: "Online", color: "bg-[#Fdfbf7] text-matcha border-matcha/30" },
+        { time: "7:00 - 8:00 PM", name: "Hatha Yoga", type: "Offline", color: "bg-matcha text-white border-matcha shadow-md" }
+      ]
+    },
+    {
+      day: "Wednesday",
+      shortDay: "Wed",
+      classes: []
+    },
+    {
+      day: "Thursday",
+      shortDay: "Thu",
+      classes: []
+    },
+    {
+      day: "Friday",
+      shortDay: "Fri",
+      classes: [
+        { time: "6:00 - 7:00 AM", name: "Online Yoga", type: "Online", color: "bg-[#Fdfbf7] text-matcha border-matcha/30" }
+      ]
+    },
+    {
+      day: "Saturday",
+      shortDay: "Sat",
+      classes: []
+    },
+    {
+      day: "Sunday",
+      shortDay: "Sun",
+      classes: [
+        { time: "7:00 - 8:00 PM", name: "Ashtanga Yoga", type: "Offline", color: "bg-matcha text-white border-matcha shadow-md" }
+      ]
+    }
+  ];
 
   const testimonials = [
     {
@@ -1275,6 +1296,117 @@ function App() {
                       </p>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Schedule Section */}
+          <section
+            id="schedule"
+            className="py-16 md:py-24 bg-gradient-to-b from-white via-almond-light to-almond-light relative"
+          >
+            <div className="max-w-7xl mx-auto px-4 md:px-8">
+              <div className="flex items-center justify-center gap-4 mb-12 md:mb-16 scroll-animate">
+                {/* Left decorations */}
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-matcha"></div>
+                  <div className="w-3 h-3 rounded-full bg-matcha"></div>
+                  <div
+                    className="w-16 h-1 bg-gradient-to-r from-transparent to-matcha"
+                    style={{ clipPath: "polygon(0 50%, 100% 0, 100% 100%)" }}
+                  ></div>
+                </div>
+
+                <h3
+                  className="text-3xl md:text-4xl lg:text-6xl text-center text-matcha font-bold"
+                  style={{ fontFamily: "'Dancing Script', cursive" }}
+                >
+                  Weekly Schedule
+                </h3>
+
+                {/* Right decorations */}
+                <div className="flex items-center gap-2">
+                  <div
+                    className="w-16 h-1 bg-gradient-to-l from-transparent to-matcha"
+                    style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}
+                  ></div>
+                  <div className="w-3 h-3 rounded-full bg-matcha"></div>
+                  <div className="w-2 h-2 rounded-full bg-matcha"></div>
+                </div>
+              </div>
+
+              {/* Desktop View: Full Week Grid */}
+              <div className="hidden lg:grid grid-cols-7 gap-2 max-w-7xl mx-auto scroll-animate">
+                {weeklySchedule.map((day, index) => (
+                  <div key={index} className={`flex flex-col rounded-3xl border ${day.classes.length > 0 ? 'bg-white border-[#e2d5c8] shadow-[0_4px_20px_-4px_rgba(210,195,175,0.4)] hover:shadow-[0_8px_30px_-4px_rgba(210,195,175,0.6)]' : 'bg-white/40 border-gray-100'} p-4 transition-all duration-300 hover:-translate-y-1`}>
+                    <div className="text-center mb-4 border-b border-matcha/10 pb-3">
+                      <h4 className="text-xl md:text-2xl font-semibold text-matcha tracking-wide" style={{ fontFamily: "'Lora', serif" }}>{day.shortDay}</h4>
+                      <span className="text-xs md:text-sm text-gray-500 font-medium">{day.day}</span>
+                    </div>
+                    <div className="flex-1 flex flex-col gap-3">
+                      {day.classes.length > 0 ? (
+                        day.classes.map((cls, idx) => (
+                          <div key={idx} className={`p-4 rounded-2xl border ${cls.color} flex flex-col gap-1.5 shadow-sm relative overflow-hidden group`}>
+                            {cls.type === "Online" && (
+                              <div className="absolute top-0 right-0 w-8 h-8 bg-matcha/5 rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-300"></div>
+                            )}
+                            <span className={`text-[10px] md:text-xs font-bold uppercase tracking-wider ${cls.type === 'Online' ? 'text-matcha/70' : 'text-white/80'}`}>{cls.type}</span>
+                            <span className="font-bold text-sm md:text-base leading-tight" style={{ fontFamily: "'Inter', sans-serif" }}>{cls.name}</span>
+                            <div className="flex items-center gap-1.5 mt-1">
+                              <FaCalendarAlt className={cls.type === 'Online' ? 'text-matcha/50 text-xs' : 'text-white/70 text-xs'} />
+                              <span className={`text-xs md:text-sm ${cls.type === 'Online' ? 'text-gray-600' : 'text-white/90'}`}>{cls.time}</span>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="flex-1 flex items-center justify-center text-gray-400 text-sm italic opacity-60">
+                          Rest Day
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mobile/Tablet View: Vertical Timeline */}
+              <div className="lg:hidden relative max-w-lg mx-auto scroll-animate px-2 mt-4">
+                {/* Timeline Line */}
+                <div className="absolute left-[31px] sm:left-[39px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-matcha/50 via-matcha/20 to-transparent"></div>
+
+                <div className="flex flex-col gap-6 sm:gap-8">
+                  {weeklySchedule.map((day, index) => {
+                    if (day.classes.length === 0) return null;
+                    return (
+                      <div key={index} className="flex gap-4 sm:gap-6 relative z-10">
+                        {/* Day Node */}
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-full bg-matcha flex flex-col items-center justify-center text-white shadow-lg shadow-matcha/30 border-4 border-[#Fdfbf7] z-10">
+                          <span className="text-sm sm:text-base font-bold leading-none mb-1" style={{ fontFamily: "'Lora', serif" }}>{day.shortDay}</span>
+                          <span className="text-[10px] sm:text-xs opacity-80">{day.classes.length} class{day.classes.length > 1 ? 'es' : ''}</span>
+                        </div>
+                        
+                        {/* Classes Content */}
+                        <div className="flex-1 flex flex-col gap-3 pt-1">
+                          <span className="text-sm font-semibold text-gray-500 ml-1">{day.day}</span>
+                          {day.classes.map((cls, idx) => (
+                            <div key={idx} className={`p-4 rounded-3xl border ${cls.color} flex flex-col gap-1.5 shadow-md relative overflow-hidden group`}>
+                              {cls.type === "Online" && (
+                                <div className="absolute top-0 right-0 w-12 h-12 bg-matcha/5 rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-500"></div>
+                              )}
+                              <div className="flex justify-between items-start">
+                                <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${cls.type === 'Online' ? 'bg-matcha/10 text-matcha' : 'bg-white/20 text-white'}`}>{cls.type}</span>
+                                <div className="flex items-center gap-1.5 bg-black/5 px-2 py-1 rounded-full">
+                                  <FaCalendarAlt className={cls.type === 'Online' ? 'text-matcha/70 text-[10px]' : 'text-white/90 text-[10px]'} />
+                                  <span className={`text-[10px] font-semibold ${cls.type === 'Online' ? 'text-matcha' : 'text-white'}`}>{cls.time}</span>
+                                </div>
+                              </div>
+                              <span className="font-bold text-base mt-1" style={{ fontFamily: "'Inter', sans-serif" }}>{cls.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
